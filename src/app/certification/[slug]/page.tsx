@@ -2,6 +2,12 @@
 import CertificationDetailPage from "@/components/CertificationDetailPage";
 import { certifications } from "@/data/certifications";
 
+export async function generateStaticParams() {
+  return certifications.map((certification) => ({
+    slug: certification.id,
+  }));
+}
+
 async function getCertificateData(params: any) {
   const slug = (await params).slug;
   // console.log("Slug:", slug);
